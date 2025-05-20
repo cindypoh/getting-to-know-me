@@ -8,20 +8,20 @@ runs:
       with:
         node-version: 20
 
-    - name: Cache dependencies ⚡
-      id: cache_dependencies
-      uses: actions/cache@v3
-      with:
-        path: |
-          node_modules
-          .next/cache
-        key: node-modules-${{ hashFiles('package-lock.json') }}
+    # - name: Cache dependencies ⚡
+    #   id: cache_dependencies
+    #   uses: actions/cache@v3
+    #   with:
+    #     path: |
+    #       node_modules
+    #       .next/cache
+    #     key: node-modules-${{ hashFiles('package-lock.json') }}
 
     - name: Install dependencies 🔧
-      shell: bash
-      if: steps.cache_dependencies.outputs.cache-hit != 'true'
-      run: npm ci
+      # shell: bash
+      # if: steps.cache_dependencies.outputs.cache-hit != 'true'
+      run: npm install
 
-    - name: Build Next.js app 🛠️
-      shell: bash
-      run: npm run build
+    # - name: Build Next.js app 🛠️
+    #   shell: bash
+    #   run: npm run build
